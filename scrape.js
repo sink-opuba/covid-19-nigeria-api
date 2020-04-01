@@ -5,7 +5,7 @@ const { parseCaseSummary, parseStatesSummary } = require("./helpers");
 module.exports = (req, res) => {
   request("http://covid19.ncdc.gov.ng/", (error, response, html) => {
     let result = [];
-    // if (error) return error;
+    if (error) return error;
     if (!error && response.statusCode == 200) {
       const $ = cheerio.load(html);
 

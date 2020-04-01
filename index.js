@@ -3,7 +3,7 @@ const cors = require("cors");
 const getData = require("./scrape");
 const helmet = require("helmet");
 const rateLImit = require("express-rate-limit");
-const compression = require(compression);
+const compression = require("compression");
 
 const app = express();
 app.use(compression());
@@ -20,9 +20,8 @@ if (process.env.NODE_ENV === "production") {
 
 app.set("port", process.env.PORT || 5000);
 
-app.get("/", getData);
-
 app.get("/api", getData);
+app.get("/", getData);
 
 app.listen(app.get("port"), function() {
   console.log(`Node app is running at http://localhost:${app.get("port")}`);
