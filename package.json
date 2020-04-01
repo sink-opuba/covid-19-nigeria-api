@@ -1,0 +1,27 @@
+{
+  "name": "scrapencdc",
+  "version": "1.0.0",
+  "description": "A realtime api that reports covid-19 cases in nigeria by states",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "Sink Opuba",
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "1.0.0-rc.3",
+    "cors": "2.8.5",
+    "express": "4.17.1",
+    "express-rate-limit": "5.1.1",
+    "helmet": "3.22.0",
+    "request": "2.88.2"
+  },
+  "engines": {
+    "node": "10.16.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sink-opuba/covid-19-nigeria-api.git"
+  }
+}

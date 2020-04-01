@@ -1,0 +1,6 @@
+{
+  "name": "Nigeria Covid-19 Report API",
+  "description": "A realtime api that reports covid-19 cases in nigeria by states",
+  "repository": "https://github.com/sink-opuba/covid-19-nigeria-api.git",
+  "keywords": ["node", "express", "static"]
+}
