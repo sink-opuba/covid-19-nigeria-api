@@ -6,7 +6,12 @@
   "scripts": {
     "start": "nodemon index.js"
   },
-  "keywords": [],
+  "keywords": [
+    "covid data",
+    "covid nigeria",
+    "covid19",
+    "covid nigeria api"
+  ],
   "author": "Sink Opuba",
   "license": "MIT",
   "dependencies": {

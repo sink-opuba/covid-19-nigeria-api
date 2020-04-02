@@ -17,7 +17,8 @@ exports.parseCaseSummary = caseSummary => {
 
 exports.parseStatesSummary = statesSummary => {
   statesSummary.shift();
-  const states = {};
+  const states = [];
+  let id = 0;
   statesSummary = statesSummary.forEach(elem => {
     // remove line breaks and whitespaces
     elem = elem.replace(/\n|\s/g, "").trim();
@@ -27,11 +28,13 @@ exports.parseStatesSummary = statesSummary => {
     const part2 = elem.substring(divider); // AkwaIbom0
     if (part1) {
       const index = getIndexOfFirstDigit(part1);
-      states[part1.slice(0, index)] = +part1.slice(index);
+      id = id + 1;
+      states.push({ id: id, [part1.slice(0, index)]: +part1.slice(index) });
     }
     if (part2) {
       const index = getIndexOfFirstDigit(part2);
-      states[part2.slice(0, index)] = +part2.slice(index);
+      id = id + 1;
+      states.push({ id: id, [part2.slice(0, index)]: +part2.slice(index) });
     }
   });
   return states;

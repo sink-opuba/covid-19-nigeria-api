@@ -4,7 +4,7 @@ const { parseCaseSummary, parseStatesSummary } = require("./helpers");
 
 module.exports = (req, res) => {
   request("http://covid19.ncdc.gov.ng/", (error, response, html) => {
-    let result = [];
+    let result = {};
     if (error) return error;
     if (!error && response.statusCode == 200) {
       const $ = cheerio.load(html);
@@ -17,7 +17,7 @@ module.exports = (req, res) => {
           caseSummary[i] = $(this).text();
         });
 
-      result.push(parseCaseSummary(caseSummary));
+      result.data = parseCaseSummary(caseSummary);
       let statesSummary = [];
 
       // Handle cases by states
@@ -27,8 +27,7 @@ module.exports = (req, res) => {
           statesSummary[i] = $(this).text();
         });
 
-      result.push({ states: parseStatesSummary(statesSummary) });
-      // console.log(JSON.stringify(result));
+      result.data.states = parseStatesSummary(statesSummary);
       res.json(result);
     }
   });
