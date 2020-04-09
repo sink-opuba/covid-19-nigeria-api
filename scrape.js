@@ -16,19 +16,19 @@ module.exports = (req, res) => {
         .each(function(i, elem) {
           caseSummary[i] = $(this).text();
         });
-
       result.data = parseCaseSummary(caseSummary);
-      let statesSummary = [];
 
       // Handle cases by states
+      let statesSummary = [];
       const NgCasesByState = $("#custom3")
         .find($("tr"))
         .each(function(i, elem) {
           statesSummary[i] = $(this).text();
         });
-
+        
       result.data.states = parseStatesSummary(statesSummary);
       res.json(result);
+
     }
   });
-};
+}
