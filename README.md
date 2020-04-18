@@ -14,25 +14,22 @@ Zero authentication required. A call to `https://covidnigeria.herokuapp.com/` or
       "discharged": 44,
       "death": 6,
       "states" : [
-        {
-                "Lagos": {
-                    "_id": uniqueID,
-                    "confirmedCases": number,
-                    "casesOnAdmission": number,
-                    "discharged": number,
-                    "death": number
-                }
-            },
-            {
-                "AbujaFCT": {
-                    "_id": uniqueID,
-                    "confirmedCases": number,
-                    "casesOnAdmission": number,
-                    "discharged": number,
-                    "death": number
-                }
-            },
-            
+        { 
+          "state": "Lagos",
+          "_id": uniqueID,
+          "confirmedCases": number,
+          "casesOnAdmission": number,
+          "discharged": number,
+          "death": number
+        },
+         { 
+          "state": "AbujaFCT",
+          "_id": uniqueID,
+          "confirmedCases": number,
+          "casesOnAdmission": number,
+          "discharged": number,
+          "death": number
+        },
          ...
       ]
    }
