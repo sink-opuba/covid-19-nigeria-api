@@ -1,9 +1,9 @@
-const shortid = require("shortid")
+const shortid = require("shortid");
 
-const getIndexOfFirstDigit = str => str.search(/\d/);
+const getIndexOfFirstDigit = (str) => str.search(/\d/);
 
-exports.parseCaseSummary = caseSummary => {
-  caseSummary = caseSummary.map(elem => {
+exports.parseCaseSummary = (caseSummary) => {
+  caseSummary = caseSummary.map((elem) => {
     // remove line breaks and whitespaces
     elem = elem.replace(/\n|\s/g, "").trim();
     const index = getIndexOfFirstDigit(elem);
@@ -14,11 +14,9 @@ exports.parseCaseSummary = caseSummary => {
     totalSamplesTested: `> ${caseSummary[0]}`,
     totalConfirmedCases: caseSummary[1],
     discharged: caseSummary[2],
-    death: caseSummary[3]
+    death: caseSummary[3],
   };
 };
-
-
 
 // exports.parseStatesSummary = statesSummary => {
 //   statesSummary.shift();
@@ -45,32 +43,29 @@ exports.parseCaseSummary = caseSummary => {
 //   return states;
 // };
 
-
 //  TEST VERSION
 
-
-
-exports.parseStatesSummary = statesSummary => {
+exports.parseStatesSummary = (statesSummary) => {
   statesSummary.shift();
   statesSummary.pop();
-  statesSummary = statesSummary.map(elem => {
+  statesSummary = statesSummary.map((elem) => {
     // removes newline breaks, multiple whitespaces and space between words
-    elem = elem.replace(/\n/g, "")
-    .replace(/[ ]{1,}/g, " ")
-    .replace(/([a-zA-Z])\s([a-zA-Z])/, "$1$2")
-    .trim()
-    .split(" "); // =>  ['Bauchi', '8', '5', '0', '0']
+    elem = elem
+      .replace(/\n/g, "")
+      .replace(/[ ]{1,}/g, " ")
+      .replace(/([a-zA-Z])\s([a-zA-Z])/, "$1$2")
+      .trim()
+      .split(" "); // =>  ['Bauchi', '8', '5', '0', '0']
     const state = {
-      [elem[0]]: {
-          _id: shortid.generate(),//generates unique ID
-          confirmedCases: +elem[1],
-          casesOnAdmission: +elem[2],
-          discharged: +elem[3],
-          death: +elem[4]
-       }
-    }
+      state: elem[0],
+      _id: shortid.generate(), //generates unique ID
+      confirmedCases: +elem[1],
+      casesOnAdmission: +elem[2],
+      discharged: +elem[3],
+      death: +elem[4],
+    };
     return state;
   });
-  
+
   return statesSummary;
 };
