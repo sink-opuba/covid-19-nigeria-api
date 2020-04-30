@@ -13,7 +13,7 @@ module.exports = (req, res) => {
       let caseSummary = [];
       const NgCaseSummary = $("#custom1")
         .find($("tr"))
-        .each(function(i, elem) {
+        .each(function (i, elem) {
           caseSummary[i] = $(this).text();
         });
       result.data = parseCaseSummary(caseSummary);
@@ -22,13 +22,12 @@ module.exports = (req, res) => {
       let statesSummary = [];
       const NgCasesByState = $("#custom3")
         .find($("tr"))
-        .each(function(i, elem) {
+        .each(function (i, elem) {
           statesSummary[i] = $(this).text();
         });
-        
+      parseStatesSummary(statesSummary);
       result.data.states = parseStatesSummary(statesSummary);
       res.json(result);
-
     }
   });
-}
+};
