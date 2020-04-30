@@ -10,9 +10,9 @@ Zero authentication required. A call to `https://covidnigeria.herokuapp.com/` or
  {
    "data": {
      "totalSamplesTested": "> 5000",
-      "totalConfirmedCases": 276,
-      "discharged": 44,
-      "death": 6,
+      "totalConfirmedCases": number,
+      "discharged": number,
+      "death": number,
       "states" : [
         { 
           "state": "Lagos",
