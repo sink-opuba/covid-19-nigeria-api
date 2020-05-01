@@ -9,23 +9,32 @@ module.exports = (req, res) => {
     if (!error && response.statusCode == 200) {
       const $ = cheerio.load(html);
 
-      // sumary of cases in Nigeria
-      let caseSummary = [];
-      const NgCaseSummary = $("#custom1")
-        .find($("tr"))
+      const caseSummary = [];
+      const totalSamplesTested = $(
+        ".pcoded-content .page-block .row > div:last-child span"
+      ).text();
+
+      const dataInfo = $(".pcoded-content .page-header div:nth-child(2)")
+        .find($(".card-body span"))
         .each(function (i, elem) {
           caseSummary[i] = $(this).text();
         });
-      result.data = parseCaseSummary(caseSummary);
+
+      // formate returned data
+      result.data = parseCaseSummary(
+        totalSamplesTested,
+        caseSummary.slice(0, 4)
+      );
 
       // Handle cases by states
-      let statesSummary = [];
-      const NgCasesByState = $("#custom3")
+      const statesSummary = [];
+      const NgCasesByState = $("#custom1")
         .find($("tr"))
         .each(function (i, elem) {
           statesSummary[i] = $(this).text();
         });
-      parseStatesSummary(statesSummary);
+
+      // console.log(parseStatesSummary(statesSummary));
       result.data.states = parseStatesSummary(statesSummary);
       res.json(result);
     }

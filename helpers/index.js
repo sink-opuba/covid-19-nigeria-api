@@ -1,19 +1,15 @@
 const shortid = require("shortid");
+const removeComma = (str) => str.replace(",", "");
 
-const getIndexOfFirstDigit = (str) => str.search(/\d/);
-
-exports.parseCaseSummary = (caseSummary) => {
-  caseSummary = caseSummary.map((elem) => {
-    // remove line breaks, commas, and whitespaces
-    elem = elem.replace(/\n|\s|\,/g, "").trim();
-    const index = getIndexOfFirstDigit(elem);
-    return +elem.substring(index);
-  });
+exports.parseCaseSummary = (totalSamplesTested, caseSummary) => {
+  totalSamplesTested = removeComma(totalSamplesTested);
+  caseSummary = caseSummary.map((str) => removeComma(str));
   return {
-    totalSamplesTested: `> ${caseSummary[0]}`,
-    totalConfirmedCases: caseSummary[1],
-    discharged: caseSummary[2],
-    death: caseSummary[3],
+    totalSamplesTested,
+    totalConfirmedCases: +caseSummary[0],
+    totalActiveCases: +caseSummary[1],
+    discharged: +caseSummary[2],
+    death: +caseSummary[3],
   };
 };
 
@@ -24,8 +20,8 @@ exports.parseStatesSummary = (statesSummary) => {
   stateData = stateData
     .map((elem) => {
       elem = elem
-        //removes newline breaks, space between words, and split into array from more than one space
-        .replace(/\n/g, " ")
+        //removes newline or comma breaks, space between words, and split into array from more than one space
+        .replace(/\n|\,/g, " ")
         .replace(/([a-zA-Z])\s([a-zA-Z])/, "$1$2")
         .trim()
         .split(/[ ]{1,}/); // =>  ['Bauchi', '8', '5', '0', '0']
