@@ -24,7 +24,7 @@ Zero authentication required. A call to `https://covidnigeria.herokuapp.com/` or
           "death": number
         },
          { 
-          "state": "AbujaFCT",
+          "state": "FCT",
           "_id": uniqueID,
           "confirmedCases": number,
           "casesOnAdmission": number,
