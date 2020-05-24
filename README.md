@@ -9,8 +9,9 @@ Zero authentication required. A call to `https://covidnigeria.herokuapp.com/` or
 ```js
  {
    "data": {
-     "totalSamplesTested": "> 5000",
+     "totalSamplesTested": string,
       "totalConfirmedCases": number,
+      "totalActiveCases": number,
       "discharged": number,
       "death": number,
       "states" : [
@@ -23,7 +24,7 @@ Zero authentication required. A call to `https://covidnigeria.herokuapp.com/` or
           "death": number
         },
          { 
-          "state": "AbujaFCT",
+          "state": "FCT",
           "_id": uniqueID,
           "confirmedCases": number,
           "casesOnAdmission": number,
