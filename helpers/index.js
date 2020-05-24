@@ -16,7 +16,6 @@ exports.parseCaseSummary = (totalSamplesTested, caseSummary) => {
 exports.parseStatesSummary = (statesSummary) => {
   let stateData = [...statesSummary];
   stateData.shift();
-  stateData.pop();
   stateData = stateData.map((elem) => {
     elem = removeComma(elem)
       //removes newline, space(s) between words, comma breaks, whitespaces, and split into array from more than one space
