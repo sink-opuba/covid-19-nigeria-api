@@ -21,7 +21,7 @@ exports.parseStatesSummary = (statesSummary) => {
       //removes newline, space(s) between words, comma breaks, whitespaces, and split into array from more than one space
       .replace(/\n/g, " ")
       .replace(/([a-zA-Z])\s([a-zA-Z])/, "$1$2")
-      .replace(/\,/, "")
+      .replace(/\,/g, "")
       .trim()
       .split(/[ ]{1,}/); // =>  ['Bauchi', '8', '5', '0', '0']
     return {
