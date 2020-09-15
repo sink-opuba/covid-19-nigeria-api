@@ -36,3 +36,5 @@ Zero authentication required. A call to `https://covidnigeria.herokuapp.com/` or
    }
  }
 ```
+To get data for a specific state, map through the returned states array and grab your state of choice. 
+See this codepen example using JavaScript fetch [here](https://codepen.io/sinkopuba/pen/VwaBWBJ)
